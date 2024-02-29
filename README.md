@@ -214,3 +214,12 @@ Output:
         (3) Day of the week = [thursday]
 --------------------------------------------------------------------------------
 ```
+
+## Contributing
+
+I doubt anyone will be interested in contributing to this project, but if you are, feel free to open an issue or submit a pull request.
+
+
+## License
+
+This project is released into the public domain and is licensed under the Unlicense.
