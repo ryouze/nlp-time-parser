@@ -1,4 +1,4 @@
-#include "lib.hpp"  // for lib::build_input, lib::StringPatternFinder, lib::print_vector
+#include "lib.hpp"
 
 #include <cstdlib>    // for std::exit, EXIT_FAILURE
 #include <exception>  // for std::exception

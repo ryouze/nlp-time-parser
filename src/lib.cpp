@@ -1,4 +1,4 @@
-#include "lib.hpp"  // for lib::build_input, lib::StringPatternFinder
+#include "lib.hpp"
 
 #include <algorithm>  // for std::transform, std::remove
 #include <cctype>     // for std::tolower
@@ -6,8 +6,6 @@
 #include <regex>      // for std::regex, std::sregex_iterator, std::smatch
 #include <string>     // for std::string
 #include <vector>     // for std::vector
-
-namespace lib {
 
 // Helper functions that are not available outside this file
 namespace {
@@ -58,7 +56,7 @@ std::string turn_lowercase_and_remove_commas(const std::string &str)
 
 }  // namespace
 
-std::vector<std::string> build_input(const int argc, const char **argv)
+std::vector<std::string> lib::build_input(const int argc, const char **argv)
 {
     // If no arguments were provided, return a placeholder std::vector
     if (argc < 2) {
@@ -94,10 +92,10 @@ std::vector<std::string> build_input(const int argc, const char **argv)
     );
 }
 
-StringPatternFinder::StringPatternFinder(std::string str)
+lib::StringPatternFinder::StringPatternFinder(std::string str)
     : str_(turn_lowercase_and_remove_commas(str)) {}
 
-std::vector<std::string> StringPatternFinder::get_dates()
+std::vector<std::string> lib::StringPatternFinder::get_dates()
 {
     // Define a pattern that matches various date formats
     static const std::regex date_pattern(R"((\d{1,2}(st|nd|rd|th)?[./-]\d{1,2}[./-]\d{2,4}|\d{1,2}(st|nd|rd|th)?[\s-]?(of )?(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s?-?\d{2,4}|\d{4}-\d{1,2}-\d{1,2}))");
@@ -105,7 +103,7 @@ std::vector<std::string> StringPatternFinder::get_dates()
     return find_matches_in_string(this->str_, date_pattern);
 }
 
-std::vector<std::string> StringPatternFinder::get_times()
+std::vector<std::string> lib::StringPatternFinder::get_times()
 {
     // Define a pattern that matches various time formats
     static const std::regex time_pattern(R"((2[0-3]|[01]?\d):\d{2}(:\d{2})?(?:\s([ap]m))?|(1[0-2]|0?[1-9]):\d{2}(:\d{2})?(?:\s([ap]m))|(1[0-2]|0?[1-9])[ap]m)");
@@ -113,12 +111,10 @@ std::vector<std::string> StringPatternFinder::get_times()
     return find_matches_in_string(this->str_, time_pattern);
 }
 
-std::vector<std::string> StringPatternFinder::get_days()
+std::vector<std::string> lib::StringPatternFinder::get_days()
 {
     // Define a pattern that matches the names of the days of the week
     static const std::regex day_pattern(R"((mon(day)?|tue(sday)?|wed(nesday)?|thu(rsday)?|fri(day)?|sat(urday)?|sun(day)?))");
     // Find all matches of the day pattern in the string (must be lowercase)
     return find_matches_in_string(this->str_, day_pattern);
 }
-
-}  // namespace lib
