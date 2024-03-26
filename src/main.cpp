@@ -12,6 +12,8 @@
 int main(int argc, const char **argv)
 {
     try {
+        // Disable synchronization between the C++ standard streams (e.g., std::cin, std::cout) and their corresponding C equivalents
+        std::ios_base::sync_with_stdio(false);
         // Separator string of 80 hyphens (defined outside loop for efficiency)
         const std::string separator(80, '-');
         // Iterate over each command line argument (if no arguments are provided, a placeholder is used)
