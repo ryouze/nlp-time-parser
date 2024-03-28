@@ -2,6 +2,7 @@
 
 #include <cstdlib>    // for std::exit, EXIT_FAILURE
 #include <exception>  // for std::exception
+#include <ios>        // for std::ios_base
 #include <iostream>   // for std::cout, std::cerr
 #include <string>     // for std::string
 #include <utility>    // for std::make_pair
